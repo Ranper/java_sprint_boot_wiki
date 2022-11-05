@@ -1,0 +1,7 @@
+--drop table if exists `test`;
+--create table if not exists `test` (
+--    `id` bigint not null ,
+--    `name` varchar(50) ,
+--    `password` varchar(50) ,
+--    primary key (`id`)
+--) engine=innodb default charset=utf8mb4;

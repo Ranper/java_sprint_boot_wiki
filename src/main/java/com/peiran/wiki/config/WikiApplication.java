@@ -6,9 +6,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
+import org.mybatis.spring.annotation.MapperScan;
 
 @ComponentScan("com.peiran")
 @SpringBootApplication
+@MapperScan("com.peiran.wiki.mapper")
 public class WikiApplication {
 	private static final Logger LOG = LoggerFactory.getLogger(WikiApplication.class);
 	public static void main(String[] args) {
