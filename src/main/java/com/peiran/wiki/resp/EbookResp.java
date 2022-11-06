@@ -1,8 +1,8 @@
-package com.peiran.wiki.domain;
+package com.peiran.wiki.resp;
 
 // Ebook类是表示Ebook的所有属性，跟mysql中的表结构相关。有时候返回给客户端的时候并不能把所有的字段都返回去，所以要单独定义
 // 返回Ebook的类
-public class Ebook {
+public class EbookResp {
     private Long id;
 
     private String name;
