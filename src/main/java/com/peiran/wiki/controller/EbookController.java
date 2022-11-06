@@ -1,6 +1,7 @@
 package com.peiran.wiki.controller;
 
 import com.peiran.wiki.domain.Ebook;
+import com.peiran.wiki.resp.CommonResp;
 import com.peiran.wiki.service.EbookService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +18,12 @@ public class EbookController {
     private EbookService ebookService;   // 将 ebookservice 注册进来
 
     @GetMapping("/list")
-    public List<Ebook> list(){
-        return  ebookService.list();
+    public CommonResp list(){
+        CommonResp<List<Ebook>> resp = new CommonResp<>();
+        List<Ebook> list = ebookService.list();
+        resp.setSuccess(true);
+        resp.setContent(list);
+        return resp;
     }
 
 }
