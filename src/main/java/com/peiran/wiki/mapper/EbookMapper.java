@@ -2,8 +2,9 @@ package com.peiran.wiki.mapper;
 
 import com.peiran.wiki.domain.Ebook;
 import com.peiran.wiki.domain.EbookExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface EbookMapper {
     long countByExample(EbookExample example);
