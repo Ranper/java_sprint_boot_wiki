@@ -6,7 +6,6 @@
     <router-view/>
 
     <the-footer></the-footer>
-
   </a-layout>
 </template>
 
