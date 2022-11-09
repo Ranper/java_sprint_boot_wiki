@@ -45,29 +45,46 @@
           </a-sub-menu>
         </a-menu>
       </a-layout-sider>
-
-
-    <a-layout style="padding: 0 24px 24px">
         <a-layout-content
           :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
         >
-          Content
+          <pre>
+{{ebooks}}
+{{ebooks2}}
+          </pre>
         </a-layout-content>
-      </a-layout>
+
   </a-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {defineComponent, onMounted, reactive, ref, toRef} from 'vue';
 import axios from 'axios';
 
 export default defineComponent({
   name: 'Home',
   setup(){
-    console.log("setup --peiran");
-    axios.get("http://localhost:8880/ebook/list?name=Spring").then((response) =>{
-      console.log(response);
-    })
+    console.log("setup --peiran");  //限制性setup， 再渲染页面， 再输出onMounted
+    const ebooks = ref();  // 响应式数据，动态的修改时，需要实时反馈到页面上； 赋值，取值时需要使用.value
+    const ebooks1 = reactive({books: []}); // reactive 需要定义对象  json对象？
+
+
+    onMounted(() =>{   // 页面渲染之后执行的操作， 初始化
+      console.log("onMounted --peiran");
+      axios.get("http://localhost:8880/ebook/list?name=Spring").then((response) =>{
+        const data = response.data;
+        ebooks.value = data.content;
+        ebooks1.books = data.content;
+
+        console.log(response);
+      });
+    });
+
+    // return 出去的变量才能再页面中使用
+    return {
+      ebooks,
+      ebooks2 : toRef(ebooks1, "books")
+    }
   }
 });
 </script>
