@@ -15,3 +15,6 @@ for (const i in icons){
     app.component(i, icons[i]);
 }
 
+// process.env  固定的读取环境变量的方式
+console.log("运行环境为:", process.env.NODE_ENV)
+console.log('服务端：', process.env.VUE_APP_SERVER);
